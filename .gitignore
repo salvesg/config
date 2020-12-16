@@ -7,6 +7,7 @@ Videos/
 Public/
 snap/
 Music/
+Documents/
 
 # Exclude hidden files and directories of no interest
 .cache/
@@ -16,16 +17,21 @@ Music/
 .local/
 .mozilla/
 .pki/
-.config/
-.emacs.d/
+.config/*
+.emacs.d/*
+.fontconfig/
+.nv/
 
 .sudo_as_admin_successful
 .bash*
 .profile
 .gitconfig
 
-# Exclude save files
+# Exclude save files and hitory files
 *~
+*_history
 
 # Actually what I want to save (will need revision)
 !.config/starship.toml
+!.config/fish/
+!.emacs.d/*.el
