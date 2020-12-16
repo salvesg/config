@@ -1,0 +1,252 @@
+# Dont print a new line at the begining of the prompt
+add_newline = true
+
+# Battery displays with different colors for different values
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+
+[[battery.display]]
+threshold = 10
+style = "bold #FF0000"
+
+[[battery.display]]
+threshold = 25
+style = "bold #FF9933"
+
+[[battery.display]]
+threshold = 50
+style = "#FFFF00"
+
+[[battery.display]]
+threshold = 75
+style = "#99FF33"
+
+[[battery.display]]
+threshold = 100
+style = "#00CC00"
+
+# Character at the begining of the prompt command
+[character]
+success_symbol = "[➜](bold #80ED0A)"
+error_symbol = "[✗](bold red)"
+vicmd_symbol = "[](bold #80ED0A)"
+
+# Time spent on last command
+[cmd_duration]
+disabled = true
+min_time = "1000"
+format = "\\[spent [$duration](bold #FDFF00)\\]"
+
+# Show current directory
+[directory]
+truncation_symbol = ".../"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+# User name 
+[username]
+format = " [$user in ]($style)"
+show_always = true
+
+# aws
+[aws]
+disabled = true
+
+# Show conda environment
+[conda]
+disabled = true
+
+# Current version of Crystal installed
+[crystal]
+disabled = true
+
+# Currwnt version of dart installed
+[dart]
+disabled = true
+
+# Shows the currently active docker context
+[docker_context]
+disabled = true
+
+# Dotnet shows the relevant version of the .NET Core SDK for the current directory
+[dotnet]
+disabled = true
+
+# Shos the current version of elixir installed
+[elixir]
+disabled = true
+
+# Current version of elm installed
+[elm]
+disabled = true
+
+# the env_bar module displays the current value of aselected environment variable
+[env_var]
+disabled = true
+variable = "SHELL"
+format = "with [$env_value](bright-purple) "
+
+# erlang module shows the current version of Erlang version installed
+[erlang]
+disabled = true
+
+# gcloud module shows the current configuration of google cloud
+[gcloud]
+disabled = true
+
+# show the current active branch of the repository
+[git_branch]
+disabled = false
+
+# show the current git commit and tag if any
+[git_commit]
+commit_hash_lengthv = 4
+only_detached = true
+tag_disabled = false
+tag_symbol = ""
+format = "[\\($hash\\)]($style) [\\($tag\\)]($style)"
+disabled = true
+
+# git_state shows if an operation is in progress
+[git_state]
+merge = " MERGING"
+rebase = " REBASING"
+revert = " REVERTING"
+cherry_pick = " PICKING"
+#format = ''
+
+# git status shows a symbol representing the state of the repo in your current directory
+[git_status]
+conflicted = "⚔️ "
+ahead = "📤[$count](green)"
+behind = "📥[$count](red)"
+diverged = "😰"
+untracked = "🤷"
+stashed = "📦"
+modified = "✍ "
+staged = '📎[+$count](green)'
+renamed = "📝"
+deleted = "🗑 "
+
+# Show the current version of golang
+[golang]
+disabled = true
+
+# Show current version of Helm installed
+[helm]
+disabled = true
+
+# Show the system host name
+[hostname]
+disabled = true
+
+# Show the current version of java installed
+[java]
+symbol = ""
+
+# Information on the current numbers of jobs running
+[jobs]
+threshold = 1
+symbol = "🛠 "
+
+# The julia module shows the currently installed version of Julia
+[julia]
+disabled = true
+
+# Make the prompt single lined
+[line_break]
+disabled = false
+
+#Show the currently installed Lua version
+[lua]
+disabled = true
+
+# Show the memory usage of the system
+[memory_usage]
+disabled = true
+
+# Show the active bracnh of the mercurial repo
+[hg_branch]
+disabled = true
+
+# shows the currently installed version of Nim
+[nim]
+disabled = true
+
+# shows the nix-shell environment.
+[nix_shell]
+disabled = true
+
+# hows the currently installed version of NodeJS.
+[nodejs]
+disabled = true
+
+# shows the currently installed version of OCaml.
+[ocaml]
+disabled = true
+
+# Show the current OpenStack cloud and project.
+[openstack]
+disabled = true
+
+# The package module is shown when the current directory is the repository for a package, and shows its current version.
+[package]
+disabled = true
+
+# shows the currently installed version of Perl.
+[perl]
+disabled = true
+
+# shows the currently installed version of PHP.
+[php]
+disabled = true
+
+# hows the currently installed version of PureScript
+[purescriot]
+disabled = true
+
+# module shows the currently installed version of Python
+[python]
+disabled = false
+
+# module shows the currently installed version of Ruby.
+[ruby]
+disabled = true
+
+# module shows the currently installed version of Rust.
+[rust]
+disabled = true
+
+# shows the current SHLVL ("shell level") environment
+[shlvl]
+disabled = true
+
+# shows the current singularity image, if inside a container and $SINGULARITY_NAME is set.
+[singularity]
+disabled = true
+
+# displays the exit code of the previous command.
+[status]
+disabled = true
+style = "bold #FC9F00"
+format = "[|$status|]($style)"
+
+# show the currently installed version of Swift
+[swift]
+disabled = true
+
+# shows the currently selected terraform workspace and version.
+[terraform]
+disabled = true
+
+# the time module show the current local time
+[time]
+disabled = true
+style = "italic bold white"
+time_format = "%T"
+format = '[\[⏳ $time\]]($style)'
+
+# shows the currently installed version of Zig
+[zig]
+disabled = true

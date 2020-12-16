@@ -1,0 +1,31 @@
+# Exclude main directories
+Downloads/
+Pictures/
+Desktop/
+Templates/
+Videos/
+Public/
+snap/
+Music/
+
+# Exclude hidden files and directories of no interest
+.cache/
+.ssh/
+.gnupg/
+.themes/
+.local/
+.mozilla/
+.pki/
+.config/
+.emacs.d/
+
+.sudo_as_admin_successful
+.bash*
+.profile
+.gitconfig
+
+# Exclude save files
+*~
+
+# Actually what I want to save (will need revision)
+!.config/starship.toml
