@@ -26,6 +26,7 @@ Documents/
 .bash*
 .profile
 .gitconfig
+.viminfo
 
 # Exclude save files and hitory files
 *~
@@ -33,5 +34,5 @@ Documents/
 
 # Actually what I want to save (will need revision)
 !.config/starship.toml
-!.config/fish/
+!.config/fish/config.fish
 !.emacs.d/*.el

@@ -20,11 +20,6 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-(load-theme 'wombat)  ;; Example theme
-
-;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 ;; Initialize package sources
 (require 'package) ;; Brings into the scope all the package related functions
 
@@ -67,40 +62,47 @@
          ("C-k" . ivy-previous-line)
          ("C-d" . ivy-reverse-i-search-kill)))
 
+(use-package ivy-rich
+  :init (ivy-rich-mode 1))
+
+;; note: the first time you run this configuration on new machine you will need to
+;; run the following command interactively so that mode line icons display correctly:
+;;
+;; m-x all-the-icons-install-fonts
+
+(use-package all-the-icons)
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
 
 (use-package doom-themes
   :config
-  ;; Global settings (defaults)
+  ;; global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-one t)
+  (load-theme 'doom-dracula t)
 
-  ;; Enable flashing mode-line on errors
+  ;; enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  ;; enable custom neotree theme (all-the-icons must be installed!)
   (doom-themes-neotree-config)
   ;; or for treemacs users
   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
   (doom-themes-treemacs-config)
   
-  ;; Corrects (and improves) org-mode's native fontification.
+  ;; corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
 (use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode)) ;; Every time we are in a programing mode, use the rainbow delimiters
+  :hook (prog-mode . rainbow-delimiters-mode)) ;; every time we are in a programing mode, use the rainbow delimiters
 
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
   :config
   (setq which-key-idle-delay 1))
-
-(use-package ivy-rich
-  :init (ivy-rich-mode 1))
 
 (use-package helpful
   :custom
@@ -112,4 +114,43 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
+(use-package general
+  :config
+  (general-create-definer salves/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+  
+  (salves/leader-keys
+    "t"  '(:ignore t :which-key "toggles")
+    "tt" '(counsel-load-theme :which-key "chose theme"))) 
+
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-i-jump t)
+  :config
+  (evil-mode 1)
+  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+(use-package hydra)
+
+(defhydra hydra-text-scale (:timeout 4)
+  "scale text"
+  ("j" text-scale-increase "in")
+  ("k" text-scale-decrease "out")
+  ("f" nil "finished" :exit t))
+
+(salves/leader-keys
+  "ts" '(hydra-text-scale/body :which_key "scale text"))
 
