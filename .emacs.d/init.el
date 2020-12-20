@@ -1,7 +1,9 @@
 ;; This is my own emacs configuration file. It is mainly for learning :D
 
 ;; Inhibit the start-up message
-(setq inhibit-statup-message t)
+(setq inhibit-startup-message t)
+
+(defvar salves/default-font-size 80)
 
 (scroll-bar-mode -1)               ;; No scroll bar
 (tool-bar-mode -1)                 ;; No tool bar
@@ -10,6 +12,8 @@
 (menu-bar-mode -1)                 ;; Disable the menu bar
 (column-number-mode)               ;; Set column number
 (global-display-line-numbers-mode) ;; Line numbers in all buffers
+
+(set-face-attribute 'default nil :font "FiraCode Nerd Font Mono Medium" :height salves/default-font-size)
 
 (dolist (mode '(shell-mode-hook)) ;; A hook is a feature that allows you to add functionalities to certain methods
   (add-hook mode (lambda () (display-line-number-mode 0)))) ;; The same hook can be added multiple times, be carefull
@@ -154,3 +158,18 @@
 (salves/leader-keys
   "ts" '(hydra-text-scale/body :which_key "scale text"))
 
+(use-package projectile
+  ;:diminish projectile-mode
+  :config (projectile-mode)
+  :custom (projectile-completition-system 'ivy)
+  :bind-keymap ("C-c p" . projectile-command-map)
+  :init
+  ;(setq projectile-project-search-path '("~/.emacs.d/")) ;; Tell projectile where to search
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
+(use-package magit
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
