@@ -1,5 +1,5 @@
 # Source all those good aliases that I have
-source ~/.bash_aliases
+source ~/.aliases
 
 # Press - to return to the previous dir
 abbr -a -- - 'cd -'
