@@ -46,7 +46,7 @@ format = "[$path]($style)[$read_only]($read_only_style) "
 
 # User name 
 [username]
-format = " [$user in ]($style)"
+format = "  [$user in ]($style)"
 show_always = true
 
 # aws
