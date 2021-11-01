@@ -36,3 +36,4 @@ Documents/
 !.config/starship.toml
 !.config/fish/config.fish
 !.emacs.d/*.el
+!.emacs.d/*.org
