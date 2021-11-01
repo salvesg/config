@@ -15,8 +15,17 @@
 
 (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono Medium" :height salves/default-font-size)
 
-(dolist (mode '(shell-mode-hook)) ;; A hook is a feature that allows you to add functionalities to certain methods
-  (add-hook mode (lambda () (display-line-number-mode 0)))) ;; The same hook can be added multiple times, be carefull
+;; Set the variable pitch face
+(set-face-attribute 'variable-pitch nil :font "Cantarell" :height 100 :weight 'regular)
+
+;; Set the fixed pitch face
+(set-face-attribute 'fixed-pitch nil :font "FiraCode Nerd Font Mono Medium" :height salves/default-font-size)
+
+(dolist (mode '(org-mode-hook
+		term-mode-hook
+		shell-mode-hook
+		eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (setq visible-bell t)              ;; Enough beeping alreadyq
 
@@ -74,7 +83,16 @@
 ;;
 ;; m-x all-the-icons-install-fonts
 
-(use-package all-the-icons)
+(use-package all-the-icons
+  :if (display-graphic-p)
+  :commands all-the-icons-install-fonts
+  :init
+  (unless (find-font (font-spec :name "all-the-icons"))
+    (all-the-icons-install-fonts t )))
+
+(use-package all-the-icons-dired
+  :if (display-graphic-p)
+  :hook (dired-mode . all-the-icons-dired-mode))
 
 (use-package doom-modeline
   :ensure t
@@ -173,3 +191,51 @@
 (use-package magit
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+(use-package forge) ;; this is a package to interact with the git API
+
+(defun salves/org-mode-setup ()
+  (org-indent-mode)
+  (variable-pitch-mode 1)
+  (visual-line-mode 1))
+
+(defun salves/org-font-setup ()
+  ;; Replace the hyphen on list with dots
+  (font-lock-add-keywords 'org-mode
+                          '(("^ *\\([-]\\) "
+                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+  (dolist (face '((org-level-1 . 1.2)
+		  (org-level-2 . 1.1)
+		  (org-level-3 . 1.05)
+		  (org-level-4 . 1.0)))
+    (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
+		  
+  ;; Enforce fixed-pitch on some modes
+  (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-table nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
+
+(use-package org
+  :hook (org-mode . salves/org-mode-setup)
+  :config
+  (setq org-ellipsis " "
+	org-hide-emphasis-markers t)
+  (salves/org-font-setup))
+
+(use-package org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode))
+
+(defun salves/org-mode-visual-fill ()
+  (setq visual-fill-column-width 80
+	visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+(use-package visual-fill-column
+  :hook (org-mode . salves/org-mode-visual-fill))
+
