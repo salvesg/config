@@ -241,4 +241,3 @@
 (use-package visual-fill-column
   :hook (org-mode . salves/org-mode-visual-fill))
 
->>>>>>> origin/master

@@ -8,6 +8,7 @@ Public/
 snap/
 Music/
 Documents/
+Programs/
 
 # Exclude hidden files and directories of no interest
 .cache/
@@ -22,6 +23,12 @@ Documents/
 .fontconfig/
 .nv/
 .julia/
+.java/
+.gnome/
+.netExtender*
+.netextender
+.vnc/
+.zoom/
 
 .sudo_as_admin_successful
 .bash*
