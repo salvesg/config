@@ -28,6 +28,5 @@ alias   cctp="sftp salves@cca.in2p3.fr"
 alias evalog="ssh -Y salves@evalu195.ific.uv.es"
 
 #emacs
-alias edd="emacs"
-alias  ed="emacs -nw"
+alias ed="emacs"
 

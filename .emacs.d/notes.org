@@ -1,0 +1,62 @@
+* First Heading
+
+** Sub Heading
+   We are writting now some content for the subheading
+   Shift-alt + arrows move content around the file
+
+*** three heading
+     You can expand and contract headings by pressing shit-tab (globally)
+     or alt_gr-tab for the a single header and its sub-headers.
+     
+* Extra heading
+  This heading was created with the alt-ret combination
+  You can inset links, for example check [[https://github.com][github]]
+
+* Heading extra 
+  This heading was created using control-ret
+
+* Second Heading
+  This is a table:
+
+  | Name   | Age | City     |
+  | Sergio |  25 | Valencia | 
+  
+  Pressing tab on the table reformats the sizes
+
+** Lists!
+
+   - First element
+   - Second item with alt-ret!
+   - And again! madness
+
+** Numerical list
+
+   1. One
+   2. two
+   3. three!
+
+** Checklist
+
+   - [ ] item 1
+   - [ ] item 2 with alt-ret
+
+* A block of code!
+
+  I'm including some code, pretty cool I would say.
+  Look at this
+
+  #+begin_src emacs-lisp
+    
+  (defun my-elisp-func ()
+     (meessage "Hello!"))
+    
+  #+end_src
+
+  I don't know whats happening but the identation is giga fucked, might be fixed later.
+  
+* TODO This is a todo
+  You can cicle through task stages *pressing* shift-arrow_keys
+
+* DONE a done task ( just do c-c c-t to mark it done)
+*  Wrapping text?
+Lets see if we have wrapping text with some classic fill up text: Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders Stupid Flanders

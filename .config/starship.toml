@@ -42,11 +42,11 @@ format = "\\[spent [$duration](bold #FDFF00)\\]"
 # Show current directory
 [directory]
 truncation_symbol = ".../"
-format = "[$path]($style)[$read_only]($read_only_style) "
+format = " in [$path]($style)[$read_only]($read_only_style) "
 
 # User name 
 [username]
-format = "  [$user in ]($style)"
+format = "  [$user]($style)"
 show_always = true
 
 # aws
@@ -139,7 +139,10 @@ disabled = true
 
 # Show the system host name
 [hostname]
-disabled = true
+ssh-only = true
+format = " on [$hostname]($style)"
+trim_at = "."
+disabled = false
 
 # Show the current version of java installed
 [java]
