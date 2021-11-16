@@ -21,6 +21,7 @@ Documents/
 .emacs.d/*
 .fontconfig/
 .nv/
+.julia/
 
 .sudo_as_admin_successful
 .bash*

@@ -25,7 +25,7 @@ alias  cclog="ssh -Y salves@cca.in2p3.fr"
 alias   cctp="sftp salves@cca.in2p3.fr"
 
 #evalu163
-alias evalog="ssh -Y salves@evalu163.ific.uv.es"
+alias evalog="ssh -Y salves@evalu195.ific.uv.es"
 
 #emacs
 alias edd="emacs"
