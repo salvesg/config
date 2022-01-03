@@ -9,6 +9,7 @@ snap/
 Music/
 Documents/
 Programs/
+Projects/
 
 # Exclude hidden files and directories of no interest
 .cache/
@@ -29,6 +30,9 @@ Programs/
 .netextender
 .vnc/
 .zoom/
+.squirrel-sql/
+.root_hist
+.wget-hsts
 
 .sudo_as_admin_successful
 .bash*
